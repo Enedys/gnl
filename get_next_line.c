@@ -6,7 +6,7 @@
 /*   By: Kwillum <daniilxod@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/09 14:28:42 by Kwillum           #+#    #+#             */
-/*   Updated: 2020/05/10 12:45:02 by Kwillum          ###   ########.fr       */
+/*   Updated: 2020/05/11 00:01:03 by Kwillum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int		check_residual(char **line, t_list **residual, int fd)
 	char		*pos;
 	void		*str_residual;
 
-	str_residual = (ft_get_residual(residual, fd));
+	str_residual = ft_get_residual(residual, fd);
 	pos = ft_strchr((char *)str_residual, '\n');
 	if (!pos)
 	{
@@ -77,7 +77,10 @@ void			set_residual(int fd, t_list *residual, char *tmp)
 	while (residual->fd != fd)
 		residual = residual->next;
 	free(residual->content);
-	residual->content = ft_strdup(tmp);
+	if (!tmp)
+		residual->content = ft_strdup("");
+	else
+		residual->content = ft_strdup(tmp);
 }
 
 int				get_next_line(int fd, char **line)
@@ -102,9 +105,7 @@ int				get_next_line(int fd, char **line)
 		*line = ft_strjoin(*line, buffer);
 		free(tmp);
 	}
-	if (r == 0)
-	{
-		set_residual(fd, residuals, ft_strdup(""));
-	}
+	if (r == 0 || r == -1)
+		set_residual(fd, residuals, NULL);
 	return ((r > 0) ? 1 : r);
 }
