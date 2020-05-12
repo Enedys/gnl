@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Kwillum <daniilxod@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/09 14:28:42 by Kwillum           #+#    #+#             */
-/*   Updated: 2020/05/12 19:06:00 by Kwillum          ###   ########.fr       */
+/*   Updated: 2020/05/12 18:58:40 by Kwillum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char		*ft_get_residual(t_list **residual, int fd)
 {
